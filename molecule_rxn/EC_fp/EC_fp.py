@@ -46,7 +46,7 @@ def valence(mol,idxs):
     """
     :rtype: int
     """
-    m_valency={'O':2,'C':4,'H':1}
+    m_valency={'O':2,'C':4,'H':1, 'N': 3} # modified for N
     atom=mol.GetAtomWithIdx(idxs)
     valency=m_valency[atom.GetSymbol()]
     return valency
@@ -57,19 +57,24 @@ def charge(mol,idxs):
     return charge
 
 def negativity(mol,idxs):
-    m_negativity={'O':3.44,'C':2.55,'H':2.2}
+    m_negativity={'O':3.44,'C':2.55,'H':2.2, 'N': 3.04}
     atom=mol.GetAtomWithIdx(idxs)
     electro_negativity=m_negativity[atom.GetSymbol()]
     return electro_negativity
 
 def mass(mol,idxs):
-    m_mass={'O':15.999,'C':12.0107,'H':1.00794}
+    from ase.data import atomic_masses
+    m_mass={'O':15.999,'C':12.0107,'H':1.00794, 'N': 14.007}
+    # m_mass = atomic_masses
+    # print(atomic_masses)
     atom=mol.GetAtomWithIdx(idxs)
     a_mass=m_mass[atom.GetSymbol()]
     return a_mass
 
 def atomic_number(mol,idxs):
-    m_number={'O':8,'C':6,'H':1}
+    from ase.data import atomic_numbers
+    # m_number={'O':8,'C':6,'H':1}
+    m_number = atomic_numbers
     atom=mol.GetAtomWithIdx(idxs)
     number=m_number[atom.GetSymbol()]
     return number

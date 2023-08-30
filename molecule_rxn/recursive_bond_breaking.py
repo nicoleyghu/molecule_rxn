@@ -6,13 +6,13 @@ Created on Mon Jul 23 14:20:34 2018
 @author: cchang373
 """
 
-import imolecule
+# import imolecule
 from rdkit import Chem
 from imolecule import generate
 import networkx as nx
 import matplotlib.pyplot as plt
 import networkx.algorithms.isomorphism as iso
-import pickle
+# import pickle
 #import json
 #from networkx.readwrite import json_graph
 
@@ -89,9 +89,13 @@ def subgroup(Graph_list,all_groups=[],x=[],group_num=[],groups_recur=[],count_id
     #nm_0=iso.categorical_node_match(['element','location'],['X','[0,0,0]'])
     nm_1=iso.categorical_node_match(['element'],['X'])
     
+    # iterating through all listed graphs
     for G in Graph_list:
+        # check for bonds as edges, if there is any bonding, proceed
         if len(G.edges()) !=0: 
+            # sub-parts
             new_graph=[]
+            # iterate through any existing bonds
             for edge in G.edges():
                 new_G=G.copy()
                 new_G.remove_edge(*edge)
